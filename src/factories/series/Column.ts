@@ -82,6 +82,9 @@ module n3Charts.Factory.Series {
       if (this.factoryMgr.get('transitions').isOn()) {
         cols.enter()
           .append('rect')
+          .attr('class', this.type).on('click', function (d, i) {
+            _this.eventMgr.trigger('click', d, i, series, _this.options);
+          })
           .attr('class', this.type)
           .call(this.eventMgr.datumEnter(series, this.options))
           .call(this.eventMgr.datumOver(series, this.options))
